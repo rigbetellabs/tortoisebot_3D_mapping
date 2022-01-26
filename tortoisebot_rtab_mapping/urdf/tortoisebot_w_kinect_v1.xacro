@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<robot name="tortoisebot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+	<xacro:include filename="$(find tortoisebot_description)/urdf/tortoisebot.xacro" />
+
+	<xacro:include filename="$(find tortoisebot_rtab_mapping)/gazebo/kinect_material.gazebo" />
+
+	<xacro:include filename="$(find tortoisebot_rtab_mapping)/gazebo/kinect_plugin.gazebo" />
+
+	<xacro:include filename="$(find tortoisebot_rtab_mapping)/gazebo/kinect_physics.gazebo" />
+
+	<link name="kinect_base">
+		<inertial>
+			<origin rpy="0 0 0" xyz="-4.4982423286210604e-07 -4.790169603699464e-08 0.009930080169777589" />
+			<mass value="0.08687629147944863" />
+			<inertia ixx="4.5e-05" ixy="0.0" ixz="0.0" iyy="3.2e-05" iyz="-0.0" izz="7.2e-05" />
+		</inertial>
+		<visual>
+			<origin rpy="0 0 0" xyz="-0.16 -0.0 -0.7" />
+			<geometry>
+				<mesh filename="package://tortoisebot_rtab_mapping/meshes/kinect_base.stl" scale="0.001 0.001 0.001" />
+			</geometry>
+			<material name="black" />
+		</visual>
+		<collision>
+			<origin rpy="0 0 0" xyz="-0.16 -0.0 -0.7" />
+			<geometry>
+				<mesh filename="package://tortoisebot_rtab_mapping/meshes/kinect_base.stl" scale="0.001 0.001 0.001" />
+			</geometry>
+		</collision>
+	</link>
+
+	<link name="kinect_sensor">
+		<inertial>
+			<origin rpy="0 0 0" xyz="-0.0014152214951219932 0.0003335256404732938 0.0318110091899082" />
+			<mass value="0.46962835372194695" />
+			<inertia ixx="0.002402" ixy="-2e-06" ixz="0.0" iyy="0.000194" iyz="-0.0" izz="0.002479" />
+		</inertial>
+		<visual>
+			<origin rpy="0 0 0" xyz="-0.16 -0.0 -0.7215" />
+			<geometry>
+				<mesh filename="package://tortoisebot_rtab_mapping/meshes/kinect_sensor.stl" scale="0.001 0.001 0.001" />
+			</geometry>
+			<material name="black" />
+		</visual>
+		<collision>
+			<origin rpy="0 0 0" xyz="-0.16 -0.0 -0.7215" />
+			<geometry>
+				<mesh filename="package://tortoisebot_rtab_mapping/meshes/kinect_sensor.stl" scale="0.001 0.001 0.001" />
+			</geometry>
+		</collision>
+	</link>
+
+	<joint name="Rigid10" type="fixed">
+		<origin rpy="0 0 0" xyz="0.0 0.0 0.25" />
+		<parent link="base_link" />
+		<child link="kinect_base" />
+	</joint>
+
+	<joint name="Rigid11" type="fixed">
+		<origin rpy="0 0 0" xyz="0.0 0.0 0.0215" />
+		<parent link="kinect_base" />
+		<child link="kinect_sensor" />
+	</joint>
+
+</robot>

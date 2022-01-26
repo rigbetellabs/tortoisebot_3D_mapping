@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<robot name="tortoisebot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+	<xacro:property name="kinect_color" value="Gazebo/Black" />
+
+	<!--  ##########  KINECT COLOR  ##########  -->
+
+	<gazebo reference="kinect_base">
+		<material>${kinect_color}</material>
+	</gazebo>
+
+	<gazebo reference="kinect_sensor">
+		<material>${kinect_color}</material>
+	</gazebo>
+
+</robot>
