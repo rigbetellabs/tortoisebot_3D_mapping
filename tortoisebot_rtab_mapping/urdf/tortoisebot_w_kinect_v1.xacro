@@ -51,6 +51,8 @@
 		</collision>
 	</link>
 
+	<link name="camera_frame_optical"/>
+
 	<joint name="Rigid10" type="fixed">
 		<origin rpy="0 0 0" xyz="0.0 0.0 0.25" />
 		<parent link="base_link" />
@@ -62,5 +64,11 @@
 		<parent link="kinect_base" />
 		<child link="kinect_sensor" />
 	</joint>
+
+	<joint name="camera_optical_joint" type="fixed">
+		<origin xyz="0 0 0" rpy="-1.5708 0 -1.5708"/>
+        <parent link="kinect_sensor"/>
+        <child link="camera_frame_optical"/>
+    </joint>
 
 </robot>
