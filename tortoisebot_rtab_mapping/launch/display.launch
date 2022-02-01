@@ -4,7 +4,8 @@
 
 	<arg default="$(find tortoisebot_rtab_mapping)/urdf/tortoisebot_w_kinect_v1.xacro" name="model"/>
 	<arg default="false" name="gui"/>
-	<arg default="$(find tortoisebot_description)/rviz/display.rviz" name="rvizconfig"/>
+	<!-- <arg default="$(find tortoisebot_description)/rviz/display.rviz" name="rvizconfig"/> -->
+	<arg default="$(find rtabmap_ros)/launch/config/turtlebot_navigation.rviz" name="rvizconfig"/>
 
 	<param command="$(find xacro)/xacro $(arg model)" name="robot_description"/>
 	<param name="use_gui" value="$(arg gui)"/>
